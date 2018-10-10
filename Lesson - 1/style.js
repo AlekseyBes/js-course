@@ -1,23 +1,25 @@
 'user strict'
 
-var money = +prompt( 'Ваш бюджет на месяц?' ),
-    time = prompt( 'Введите дату в формате:', 'YYYY-MM-DD' );
+let money = prompt( 'Ваш бюджет на месяц?', '' ),
+    time = prompt( 'Введите дату в формате YYYY-MM-DD', '' );
 
-var questionOne =  prompt( 'Введите обязательную статью расходов в этом месяце?' ),
-    questionTwo =  prompt( 'Во сколько обойдется?' );
+let questionOne = prompt( 'Введите обязательную статью расходов в этом месяце?', ''),
+    questionTwo = prompt( 'Во сколько обойдется?', '' );
+    questionThree = prompt( 'Введите обязательную статью расходов в этом месяце?', ''),
+    questionFour = prompt( 'Во сколько обойдется?', '' );
 
-var appData = {
+let appData = {
   budjet: money,
   timeData: time,
   expenses: {
     questionOne: questionTwo,
-    questionTwo: questionOne
+    questionThree: questionFour
   },
   optionalExpenses: {},
   income: [],
   savings: false
 }
 
-var moneyOnDay = appData.budjet / 30; // можно было использовать пер-ю "money"
+let moneyOnDay = appData.budjet / 30;
 
 alert(moneyOnDay);
