@@ -61,22 +61,23 @@ let appData = {
     }
   },
   chooseIncome: function(){
-    let i = 1;
     let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+    while(!isNaN(items) || items == '' || items == 'null'){//не получается чтоб вводилось только строка
+      items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
+    };
     appData.income = items.split(', ');
     appData.income.push(prompt('Может что-то еще?'));
     appData.income.sort();
-    while(typeof(items) !== 'string' || items == '' || items == 'null'){//не получается чтоб вводилось только строка
-      items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)', '');
-    };
+    let i = 0;
     appData.income.forEach(function(item, i, income) {
-      alert("Способы доп. заработка: " + i + "- " + item);// не получается через еденицу
+      console.log("Способы доп. заработка: " + (i+1) + "- " + item);// не получается через еденицу
     });
   }
 }
 
 function allElement() {
-  for (var elem in appData) {
-    console.log("Наша программа включает в себя данные: " + elem);
+  for (var element in appData) {
+    console.log("Наша программа включает в себя данные: " + element);
   }
 }
+allElement();
