@@ -133,10 +133,9 @@ window.addEventListener('DOMContentLoaded', function () {
   };
 
   let form = document.querySelector('.main-form'),
-      input = form.getElementsByTagName('input'),
+      input = input.getElementsByTagName('input'),
       statusMessage = document.createElement('div'),
       contactForm = document.querySelector('#form'),
-      contactInput = contactForm.getElementsByTagName('input');
   statusMessage.classList.add('status');
 
 //для модального окна
@@ -189,8 +188,8 @@ window.addEventListener('DOMContentLoaded', function () {
           })
         }//end postData
         function clearInput() {
-          for (let i = 0; i < contactInput.length; i++) {
-            contactInput[i].value = '';
+          for (let i = 0; i < input.length; i++) {
+            input[i].value = '';
           }
         }
 
