@@ -139,54 +139,34 @@ window.addEventListener('DOMContentLoaded', function () {
       contactInput = contactForm.getElementsByTagName('input');
   statusMessage.classList.add('status');
 
-  // let request = new XMLHttpRequest();
-  // request.open('POST', 'server.php');
-  // request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-
-  function checkForm() {
-      if (request.readyState < 4) {
-        statusMessage.innerHTML = message.loading;
-      } else if (request.readyState === 4 && request.status == 200) {
-        statusMessage.innerHTML = message.success;
-      } else {
-        statusMessage.innerHTML = message.failure;
-      }
-  }
 //для модального окна
-  // form.addEventListener('submit', function (event) {
-  //   event.preventDefault();
-  //   form.appendChild(statusMessage);
-  //
-  //     let formData = new FormData(form);
-  //
-  //     let obj = {};
-  //     formData.forEach(function (value, key) {
-  //       obj[key] = value;
-  //     });
-  //
-  //     let json = JSON.stringify(obj);
-  //
-  //     request.send(json);
-  //
-  //     request.addEventListener('readystatechange', function() {
-  //       checkForm();
-  //     });
-  //
-  //   for (let i = 0; i < input.length; i++) {
-  //     input[i].value = '';
-  //   }
-  // });
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+    this.appendChild(statusMessage);
+    let form = this;
+    sendForm(form);
+  });
 
+//для формы в конце лендинга
+  contactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+    this.appendChild(statusMessage);
+    let form = this;
+    sendForm(form);
+
+  });
+
+
+// функция обработки отпарвки
   function sendForm(form) {
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-        form.appendChild(statusMessage);
+
         let formData = new FormData(form);
 
         let obj = {};
         formData.forEach(function (value, key) {
           obj[key] = value;
         });
+
         let json = JSON.stringify(obj);
 
         function postData(json) {
@@ -219,31 +199,6 @@ window.addEventListener('DOMContentLoaded', function () {
             .then(() => statusMessage.innerHTML = message.success)
             .catch(() => statusMessage.innerHTML = message.failure)
             .then(clearInput)
-    });
-  }
-
-//для формы в конце лендинга
-  contactForm.addEventListener('submit', function (event) {
-    event.preventDefault();
-    contactForm.appendChild(statusMessage);
-
-      let formData = new FormData(contactForm);
-
-      let obj = {};
-      formData.forEach(function (value, key) {
-        obj[key] = value;
-      });
-
-      let json = JSON.stringify(obj);
-
-      request.send(json);
-
-      request.addEventListener('readystatechange', function() {
-        checkForm();
-      });
-
-    for (let i = 0; i < contactInput.length; i++) {
-      contactInput[i].value = '';
     }
-  });
+
 });
