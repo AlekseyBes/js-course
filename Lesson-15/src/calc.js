@@ -3,12 +3,21 @@ function calc() {
     restDays = document.querySelectorAll('.counter-block-input')[1],
     place = document.getElementById('select'),
     totalValue = document.getElementById('total'),
+    // calcInput = document.querySelectorAll('counter-block-input'),
     personsSum = 0,
     daysSum = 0,
     total = 0;
 
   totalValue.innerHTML = 0;
-
+  // calcInput.addEventListener('input', function () {
+  //     calcInput.value = calcInput.value.replace(/[^\d]/g,'');
+  // });
+  persons.addEventListener('input', function () {
+      persons.value = persons.value.replace(/[^0-9]/ig,'');
+  });
+  restDays.addEventListener('input', function () {
+      restDays.value = restDays.value.replace(/[^0-9]/ig,'');
+  });
   persons.addEventListener('change', function() {
     personsSum = +this.value;
     total = (personsSum + daysSum) * 4000;

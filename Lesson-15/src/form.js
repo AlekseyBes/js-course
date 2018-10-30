@@ -13,7 +13,7 @@ function form() {
     contactInputNumber = contactForm.getElementsByTagName('input')[1];
 
   contactInputNumber.addEventListener('input', function () {
-    contactInputNumber.value = contactInputNumber.value.replace(/[^0-9+()]/ig, '');
+    contactInputNumber.value = contactInputNumber.value.replace(/[^0-9+()]{11}/ig, '');
   });
   statusMessage.classList.add('status');
 
