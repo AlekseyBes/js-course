@@ -2,7 +2,12 @@ function modal() {
   let more = document.querySelector('.more'),
       overlay = document.querySelector('.overlay'),
       close = document.querySelector('.popup-close'),
-      descriptionBtn = document.querySelectorAll('.description-btn');
+      descriptionBtn = document.querySelectorAll('.description-btn'),
+      modalInput = document.querySelector('.popup-form__input');
+  
+    modalInput.addEventListener('input', function () {
+      modalInput.value = modalInput.value.replace(/[^0-9+()]/ig, '');
+    });
 
   function showModal() {
     overlay.style.display = 'block';

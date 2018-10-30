@@ -15,7 +15,8 @@ function calc() {
     if (restDays.value == '' || persons.value == '' || restDays.value == 0 || persons.value == 0) {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+      let a = total;
+      totalValue.innerHTML = a * place.options[place.selectedIndex].value;
     }
   });
 
@@ -27,7 +28,8 @@ function calc() {
       // } else if (!isNaN(restDays.value) || restDays.value == 'e') {
       //   restDays.value.innerHTML = '';
     } else {
-      totalValue.innerHTML = total;
+      let a = total;
+      totalValue.innerHTML = a * place.options[place.selectedIndex].value;
     }
   });
 

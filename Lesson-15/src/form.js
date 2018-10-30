@@ -6,10 +6,15 @@ function form() {
   };
 
   let form = document.querySelector('.main-form'),
-    input = document.getElementsByTagName('input'),
+    formInput = form.getElementsByTagName('input'),
     statusMessage = document.createElement('div'),
-    contactForm = document.querySelector('#form');
+    contactForm = document.querySelector('#form'),
+    contactInput = contactForm.getElementsByTagName('input'),
+    contactInputNumber = contactForm.getElementsByTagName('input')[1];
 
+  contactInputNumber.addEventListener('input', function () {
+    contactInputNumber.value = contactInputNumber.value.replace(/[^0-9+()]/ig, '');
+  });
   statusMessage.classList.add('status');
 
   //для модального окна
@@ -17,7 +22,9 @@ function form() {
     event.preventDefault();
     this.appendChild(statusMessage);
     let form = this;
+    let input = formInput;
     sendForm(form);
+    clearInput(input);
   });
 
   //для формы в конце лендинга
@@ -25,7 +32,9 @@ function form() {
     event.preventDefault();
     this.appendChild(statusMessage);
     let form = this;
+    let input = contactInput;
     sendForm(form);
+    clearInput(input);
 
   });
 
@@ -60,17 +69,18 @@ function form() {
         request.send(json);
       })
     } //end postData
-    function clearInput() {
-      for (let i = 0; i < input.length; i++) {
-        input[i].value = '';
-      }
-    }
+
 
     postData(json)
       .then(() => statusMessage.innerHTML = message.loading)
       .then(() => statusMessage.innerHTML = message.success)
       .catch(() => statusMessage.innerHTML = message.failure)
       .then(clearInput)
+  }
+  function clearInput(input) {
+    for (let i = 0; i < input.length; i++) {
+      input[i].value = '';
+    }
   }
 }
 

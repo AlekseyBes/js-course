@@ -5,9 +5,7 @@ function carousel() {
     next = document.querySelector('.next'),
     dotsWrap = document.querySelector('.slider-dots'),
     dots = document.querySelectorAll('.dot');
-  console.log(prev);
-  console.log(next);
-  console.log(slideIndex);
+
   showSlides(slideIndex);
 
   function showSlides(n) {
@@ -22,7 +20,6 @@ function carousel() {
 
     slides[slideIndex - 1].style.display = 'block';
     dots[slideIndex - 1].classList.add('dot-active');
-    console.log(slideIndex);
   }
 
   function plusSlides(n) {
